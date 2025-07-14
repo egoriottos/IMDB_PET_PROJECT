@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: verification-service
+  config:
+    import: configserver:http://localhost:8085
+server:
+  port: 8086

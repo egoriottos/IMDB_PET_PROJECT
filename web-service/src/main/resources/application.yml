@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: web-service
+  config:
+    import: configserver:http://localhost:8085
+server:
+  port: 8082

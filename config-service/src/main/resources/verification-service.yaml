@@ -1,0 +1,46 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: pass
+      ssl:
+        enabled: true
+      lettuce:
+        pool:
+          max-idle: 8
+          min-idle: 1
+          max-active: 100
+          max-wait: 5000
+  application:
+    name: verification-service
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: bublikovegor25@gmail.com
+    password: pcpk pngw ecnt rhhi
+    properties:
+      mail:
+        smtp:
+          connection-timeout: 5000
+          timeout: 3000
+          write-timeout: 5000
+          starttls:
+            enable: true
+          auth: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    health:
+      show-details: ALWAYS
+    prometheus:
+      enabled: true
+server:
+  port: 8086

@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: film-service
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5433/filmdb
+    username: user
+    password: user
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    schemas: public
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        spring.json.add.type.headers: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    health:
+      show-details: ALWAYS
+    prometheus:
+      enabled: true
+
+server:
+  port: 8083
+app:
+  kafka:
+    topic:
+      search-service:
+        load-to-elastic: LOAD-ALL
+        update: UPDATE
+        create: CREATE
+        delete: DELETE

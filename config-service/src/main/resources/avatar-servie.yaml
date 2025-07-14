@@ -1,0 +1,12 @@
+spring:
+  flyway:
+    enabled: false
+  application:
+    name: avatar-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5434/avatardb
+    username: user
+    password: user
+server:
+  port: 8087

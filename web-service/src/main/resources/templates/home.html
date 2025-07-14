@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${message}">Добро пожаловать!</h1>
+    <p>Вы успешно авторизовались.</p>
+
+    <form th:action="@{/web-service/users}" method="get">
+        <button type="submit" class="logout-btn" style="background-color: #4CAF50; margin-bottom: 20px;">Показать список
+            пользователей
+        </button>
+    </form>
+    <form th:action="@{/web-service/movies/all}" method="get">
+        <button type="submit" class="logout-btn" style="background-color: #4CAF50; margin-bottom: 20px;">
+            Показать список фильмов
+        </button>
+    </form>
+    <form th:action="@{/web-service/search}" method="get">
+        <button type="submit" class="logout-btn" style="background-color: #4CAF50; margin-bottom: 20px;">
+            Искать фильм
+        </button>
+    </form>
+
+    <form th:action="@{/web-service/logout}" method="post">
+        <button type="submit" class="logout-btn" ; style=" margin-bottom: 20px;">Выйти</button>
+    </form>
+    <div th:if="${param.logout}" class="alert alert-success">
+        Вы успешно вышли из системы!
+    </div>
+</div>
+
+</body>
+</html>
